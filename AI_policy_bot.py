@@ -7,6 +7,8 @@ from email.mime.text import MIMEText
 from typing import Dict, List, Optional, Tuple
 import logging
 
+
+
 class SecurityLogger:
     def __init__(self, log_file: str = 'security_events.log'):
         logging.basicConfig(
@@ -50,7 +52,8 @@ class SecurityNotifier:
 
 class PermissionChecker:
     def __init__(self, org_data_file: str, security_logger: SecurityLogger, security_notifier: SecurityNotifier):
-        self.df = pd.read_excel(org_data_file)
+        
+        self.df = pd.read_excel("organization_data.xlsx",engine='openpyxl')
         self.security_logger = security_logger
         self.security_notifier = security_notifier
         
